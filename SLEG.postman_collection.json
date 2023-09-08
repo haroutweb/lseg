@@ -1,0 +1,45 @@
+{
+	"info": {
+		"_postman_id": "2f11df8a-1383-434c-aabf-7ef8223522e5",
+		"name": "SLEG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14880236"
+	},
+	"item": [
+		{
+			"name": "Earning",
+			"item": [
+				{
+					"name": "Get Earning",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3012/api/averageEarning?cur=USD&targetCur=EUR",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3012",
+							"path": [
+								"api",
+								"averageEarning"
+							],
+							"query": [
+								{
+									"key": "cur",
+									"value": "USD"
+								},
+								{
+									"key": "targetCur",
+									"value": "EUR"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
