@@ -9,7 +9,7 @@ export const getData = async (currencies: Array<string>, targetCurrency: string)
     url:
       'https://www.alphavantage.co/query' +
       '?function=EARNINGS_CALENDAR' +
-      '&horizon=1month' +
+      '&horizon=3month' +
       '&apikey=' + process.env.API_KEY
   });
 
@@ -42,6 +42,8 @@ export const getData = async (currencies: Array<string>, targetCurrency: string)
 
     companies.push(record);
   }
+
+  companies = isCompanyWithNearestReport(companies);
 
   if (!companies.length) {
     throw new BadRequestException();
@@ -101,3 +103,22 @@ export const convertCurrency = async (from: string, to: string) => {
     value: parseFloat(axiosResponse.data['Realtime Currency Exchange Rate']['5. Exchange Rate'])
   };
 };
+
+export const isCompanyWithNearestReport = (data: CompanyEarning[]) => {
+  const now = new Date();
+  let diff = Infinity;
+  const companies: CompanyEarning[] = [];
+
+  for (const company of data) {
+    const reportDate = new Date(company.reportDate);
+    const monthDiff = Math.abs(now.getTime() - reportDate.getTime());
+
+    if (monthDiff < diff) {
+      diff = monthDiff;
+    }
+
+    companies.push(company);
+  }
+
+  return companies;
+}

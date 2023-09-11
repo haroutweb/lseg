@@ -4,6 +4,7 @@
   "description": "REST API for LSEG task",
   "main": "src/index.ts",
   "scripts": {
+    "build": "tsc",
     "build:check": "tsc --project ./tsconfig.json --noEmit",
     "start": "ts-node src/index.ts",
     "start:dev": "nodemon --exec ts-node src/index.ts",

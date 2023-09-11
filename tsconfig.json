@@ -9,7 +9,6 @@
     ],
     "typeRoots": [
       "./node_modules/@types",
-      "./src/typings/definitions"
     ],
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,7 +20,9 @@
     "module": "CommonJS",
     "moduleResolution": "Node",
     "resolveJsonModule": true,
-    "noEmit": true
+    "noEmit": true,
+    "outDir": "./dist",
+    "rootDir": "./",
   },
   "include": [
     "src"
